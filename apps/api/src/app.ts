@@ -3,6 +3,7 @@ import cors from '@fastify/cors';
 import swagger from '@fastify/swagger';
 import swaggerUi from '@fastify/swagger-ui';
 import { healthRoutes } from './routes/health.js';
+import { notesRoutes } from './routes/notes.js';
 
 export async function buildApp() {
   const app = Fastify({
@@ -41,6 +42,7 @@ export async function buildApp() {
   });
 
   await app.register(healthRoutes, { prefix: '/api' });
+  await app.register(notesRoutes, { prefix: '/api' });
 
   return app;
 }

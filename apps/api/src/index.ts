@@ -1,7 +1,9 @@
 import 'dotenv/config';
 import { buildApp } from './app.js';
 import { closePool } from './db/index.js';
+import { runMigrations } from './db/migrate.js';
 
+await runMigrations();
 const app = await buildApp();
 
 const port = parseInt(process.env.API_PORT ?? '3000', 10);
